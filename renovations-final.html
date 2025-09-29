@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Renovations - The Reno Crew | Auckland Renovation Specialists</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-navy: #1e3a5f;
+            --primary-yellow: #f4c430;
+            --primary-gold: #FFD700;
+            --accent-blue: #2c5aa0;
+            --light-gray: #f7f7f7;
+            --medium-gray: #666666;
+            --dark-gray: #333333;
+            --white: #ffffff;
+            --success-green: #52c41a;
+            --border-gray: #e0e0e0;
+            --shadow: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-hover: 0 4px 16px rgba(0,0,0,0.15);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background: var(--white);
+        }
+
+        /* Header */
+        .header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            gap: 15px;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-text {
+            color: var(--primary-navy);
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .logo-text span {
+            color: var(--primary-yellow);
+        }
+
+        .back-btn {
+            background: var(--primary-yellow);
+            color: var(--primary-navy);
+            padding: 10px 24px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .back-btn:hover {
+            background: var(--primary-gold);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section with Before/After Background */
+        .hero {
+            position: relative;
+            color: var(--white);
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: var(--primary-navy);
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            z-index: 1;
+        }
+
+        .hero-image {
+            position: relative;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero-image.before {
+            background-image: url('renovation-before-final.jpg');
+        }
+
+        .hero-image.after {
+            background-image: url('renovation-after-final.jpg');
+        }
+
+        .hero-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.4), rgba(44, 90, 160, 0.4));
+        }
+
+        .hero-image-label {
+            position: absolute;
+            bottom: 30px;
+            left: 30px;
+            color: white;
+            font-size: 28px;
+            font-weight: 700;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.9);
+            z-index: 2;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-image:nth-child(2) .hero-image-label {
+            left: auto;
+            right: 30px;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            text-align: center;
+            padding: 60px 20px;
+            max-width: 900px;
+            width: 100%;
+            background: rgba(30, 58, 95, 0.85);
+            backdrop-filter: blur(5px);
+            border-radius: 12px;
+            margin: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.7);
+            color: #ffffff;
+        }
+
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+            color: #ffffff;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255,255,255,0.15);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 14px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        /* Service Categories */
+        .service-categories {
+            padding: 80px 20px;
+            background: var(--light-gray);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 36px;
+            color: var(--primary-navy);
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            color: var(--medium-gray);
+            font-size: 18px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        @media (max-width: 1024px) {
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid var(--border-gray);
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(244, 196, 48, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+
+        .service-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke: var(--primary-yellow);
+        }
+
+        .service-card h3 {
+            color: var(--primary-navy);
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--medium-gray);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .service-card .learn-more {
+            color: var(--primary-yellow);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 80px 20px;
+            background: var(--white);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .process-step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-yellow);
+            color: var(--primary-navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .process-step h3 {
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        .process-step p {
+            color: var(--medium-gray);
+            font-size: 14px;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary-yellow), var(--primary-gold));
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: 36px;
+            color: var(--primary-navy);
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 18px;
+            color: var(--primary-navy);
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary-navy);
+            color: var(--white);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-navy);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--primary-navy);
+            color: var(--white);
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        .footer p {
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .footer a {
+            color: var(--primary-yellow);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .hero-background {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+            }
+            
+            .hero-image-label {
+                font-size: 20px;
+            }
+            
+            .hero-content {
+                padding: 40px 20px;
+                margin: 10px;
+            }
+            
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="index.html" class="logo">
+                <img src="reno-crew-logo.png" alt="The Reno Crew Ltd">
+                <span class="logo-text">THE RENO <span>CREW</span></span>
+            </a>
+            <a href="index.html" class="back-btn">← Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Hero Section with Before/After Background -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-image before">
+                <span class="hero-image-label">Before</span>
+            </div>
+            <div class="hero-image after">
+                <span class="hero-image-label">After</span>
+            </div>
+        </div>
+        <div class="hero-content">
+            <h1>Full Home Renovations</h1>
+            <p>Complete kitchen, bathroom, and whole home transformations in Auckland</p>
+            <div class="hero-badges">
+                <div class="badge">✓ Licensed Builders</div>
+                <div class="badge">✓ Project Management</div>
+                <div class="badge">✓ Free Consultation</div>
+                <div class="badge">✓ Quality Guarantee</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Categories -->
+    <section class="service-categories">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comprehensive Renovation Services</h2>
+                <p>Transform your living spaces with our expert renovation team</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 3h18v18H3zM12 8v8m-4-4h8"></path>
+                        </svg>
+                    </div>
+                    <h3>Kitchen Renovations</h3>
+                    <p>Complete kitchen remodels including cabinets, countertops, appliances, and layout redesign</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 2l3 7H3l3-7zm10 0l3 7h-6l3-7z"></path>
+                            <rect x="4" y="9" width="16" height="13"></rect>
+                        </svg>
+                    </div>
+                    <h3>Bathroom Renovations</h3>
+                    <p>Modern bathroom transformations with tiling, fixtures, vanities, and shower installations</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Living Space Remodeling</h3>
+                    <p>Open plan conversions, room additions, and complete interior redesigns</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="8" width="18" height="12"></rect>
+                            <path d="M8 8V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v3"></path>
+                        </svg>
+                    </div>
+                    <h3>Flooring Installation</h3>
+                    <p>Hardwood, laminate, vinyl, tile, and carpet installation throughout your home</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path d="M12 1v6m0 6v6m4.22-10.22l4.24-4.24M6.34 6.34L2.1 2.1m17.8 17.8l-4.24-4.24M6.34 17.66L2.1 21.9"></path>
+                        </svg>
+                    </div>
+                    <h3>Lighting & Electrical</h3>
+                    <p>Modern lighting design, electrical upgrades, and smart home installations</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Project Management</h3>
+                    <p>Complete renovation coordination from design to completion with licensed professionals</p>
+                    <a href="#" class="learn-more">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Renovation Process</h2>
+                <p>A streamlined approach to transform your home</p>
+            </div>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Consultation</h3>
+                    <p>Discuss your vision and assess your space</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Design & Planning</h3>
+                    <p>Create detailed plans and select materials</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Construction</h3>
+                    <p>Professional execution by skilled tradespeople</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Final Walkthrough</h3>
+                    <p>Quality inspection and project handover</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <h2>Ready to Transform Your Home?</h2>
+        <p>Get a free consultation for your renovation project today</p>
+        <div class="cta-buttons">
+            <a href="tel:0272819609" class="btn btn-primary">Call Now: 027 281 9609</a>
+            <a href="index.html#contact" class="btn btn-secondary">Get Online Quote</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2024 The Reno Crew. All rights reserved.</p>
+        <p>Professional Renovation Services in Auckland</p>
+        <p>Email: <a href="mailto:therenocrewltd@gmail.com">therenocrewltd@gmail.com</a> | Phone: 027 281 9609 | Mon-Fri: 9AM-6PM, Sat: 9AM-4PM</p>
+    </footer>
+</body>
+</html>

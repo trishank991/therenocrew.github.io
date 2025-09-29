@@ -1260,46 +1260,50 @@
             <div class="contact-form">
                 <!-- Form submissions will be sent to: therenocrewltd@gmail.com -->
                 <!-- To activate: Sign up at formspree.io or emailjs.com and update the form action -->
-                <form id="quoteForm">
+                <!-- Replace YOUR_GOOGLE_FORM_ACTION_URL with your actual Google Form action URL -->
+                <form id="quoteForm" action="YOUR_GOOGLE_FORM_ACTION_URL" method="POST" target="hidden_iframe">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="firstName">First Name *</label>
-                            <input type="text" id="firstName" name="firstName" required>
+                            <input type="text" id="firstName" name="entry.FIRST_NAME_ENTRY_ID" required>
                         </div>
                         <div class="form-group">
                             <label for="lastName">Last Name *</label>
-                            <input type="text" id="lastName" name="lastName" required>
+                            <input type="text" id="lastName" name="entry.LAST_NAME_ENTRY_ID" required>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group">
                             <label for="email">Email *</label>
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="entry.EMAIL_ENTRY_ID" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone *</label>
-                            <input type="tel" id="phone" name="phone" required>
+                            <input type="tel" id="phone" name="entry.PHONE_ENTRY_ID" required>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="service">Service Required *</label>
-                        <select id="service" name="service" required>
+                        <select id="service" name="entry.SERVICE_ENTRY_ID" required>
                             <option value="">Select a service</option>
-                            <option value="repairs">Home Repairs</option>
-                            <option value="deck">Deck Repair/Build</option>
-                            <option value="renovation">Renovations</option>
-                            <option value="fence">Fencing</option>
-                            <option value="lawn">Lawn Care & Landscaping</option>
-                            <option value="painting">Painting</option>
-                            <option value="gibstopping">GIB® & Plastering</option>
+                            <option value="Home Repairs">Home Repairs</option>
+                            <option value="Deck Repair/Build">Deck Repair/Build</option>
+                            <option value="Renovations">Renovations</option>
+                            <option value="Fencing">Fencing</option>
+                            <option value="Lawn Care & Landscaping">Lawn Care & Landscaping</option>
+                            <option value="Painting">Painting</option>
+                            <option value="GIB® & Plastering">GIB® & Plastering</option>
                         </select>
                     </div>
                     <div class="form-group">
                         <label for="message">Project Details</label>
-                        <textarea id="message" name="message" placeholder="Please describe your project..."></textarea>
+                        <textarea id="message" name="entry.PROJECT_DETAILS_ENTRY_ID" placeholder="Please describe your project..."></textarea>
                     </div>
                     <button type="submit" class="form-submit">Request Free Quote</button>
                 </form>
+                
+                <!-- Hidden iframe for Google Forms submission -->
+                <iframe name="hidden_iframe" style="display:none;"></iframe>
             </div>
             <div class="contact-info-section">
                 <h3>Get in Touch</h3>
@@ -1509,11 +1513,14 @@
             });
         });
 
-        // Form submission
+        // Form submission to Google Forms
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your inquiry! We\'ll contact you within 24 hours with a detailed quote.\n\nFor urgent matters, please email us directly at therenocrewltd@gmail.com');
-            this.reset();
+            // Don't prevent default - let the form submit to Google Forms
+            // Show confirmation message after a brief delay
+            setTimeout(function() {
+                alert('Thank you for your inquiry! We\'ve received your request and will contact you within 24 hours with a detailed quote.\n\nFor urgent matters, please email us directly at therenocrewltd@gmail.com');
+                document.getElementById('quoteForm').reset();
+            }, 1000);
         });
     </script>
 </body>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Google Form Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: 0 auto; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input, select, textarea { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        button { background: #007cba; color: white; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; }
+        .success { background: #d4edda; color: #155724; padding: 10px; border-radius: 4px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Simple Google Form Test</h1>
+    <p>This test uses a direct approach to Google Forms submission.</p>
+    
+    <!-- Simple form that submits directly to Google Forms -->
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSeXNQsBtbDdXzSvjWKCjR_0IV8mNjQG3HXqkDR-3iI8w3ogTA/formResponse" method="POST" target="_blank">
+        
+        <div class="form-group">
+            <label for="name">Name *</label>
+            <input type="text" id="name" name="entry.2034928511" required value="Test User">
+        </div>
+        
+        <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="entry.1651265940" required value="test@example.com">
+        </div>
+        
+        <div class="form-group">
+            <label for="address">Address *</label>
+            <input type="text" id="address" name="entry.278959202" required value="123 Test Street">
+        </div>
+        
+        <div class="form-group">
+            <label for="service">Service Needed *</label>
+            <select id="service" name="entry.333722396" required>
+                <option value="Home Repairs">Home Repairs</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="priority">Priority *</label>
+            <select id="priority" name="entry.1390191149" required>
+                <option value="3">3 - Medium</option>
+            </select>
+        </div>
+        
+        <button type="submit">Submit Test (Opens New Tab)</button>
+    </form>
+    
+    <h2>Alternative Test Links</h2>
+    <p>Click these to test different submission methods:</p>
+    
+    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeXNQsBtbDdXzSvjWKCjR_0IV8mNjQG3HXqkDR-3iI8w3ogTA/formResponse?entry.2034928511=TestName&entry.1651265940=test@email.com&entry.278959202=Test%20Address&entry.333722396=Home%20Repairs&entry.1390191149=3" target="_blank">Test with GET method</a></p>
+    
+    <p><a href="https://docs.google.com/forms/d/e/1FAIpQLSeXNQsBtbDdXzSvjWKCjR_0IV8mNjQG3HXqkDR-3iI8w3ogTA/viewform" target="_blank">Open Original Google Form</a></p>
+    
+    <h2>Debugging Info</h2>
+    <p>Form ID: 1FAIpQLSeXNQsBtbDdXzSvjWKCjR_0IV8mNjQG3HXqkDR-3iI8w3ogTA</p>
+    <p>Entry IDs we're using:</p>
+    <ul>
+        <li>Name: entry.2034928511</li>
+        <li>Email: entry.1651265940</li>
+        <li>Address: entry.278959202</li>
+        <li>Service: entry.333722396</li>
+        <li>Priority: entry.1390191149</li>
+    </ul>
+</body>
+</html>

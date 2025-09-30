@@ -1261,6 +1261,9 @@
                 <!-- Form submissions will be sent to: therenocrewltd@gmail.com -->
                 <!-- To activate: Sign up at formspree.io or emailjs.com and update the form action -->
                 <form id="quoteForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeXNQsBtbDdXzSvjWKCjR_0IV8mNjQG3HXqkDR-3iI8w3ogTA/formResponse" method="POST" target="hidden_iframe">
+                    <!-- Google Forms hidden fields -->
+                    <input type="hidden" name="draftResponse" value="[]">
+                    <input type="hidden" name="pageHistory" value="0">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="fullName">Full Name *</label>
@@ -1532,6 +1535,7 @@
         let formSubmissionInProgress = false;
         
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
             console.log('Form submission started...');
             formSubmissionInProgress = true;
             
@@ -1548,26 +1552,49 @@
             });
             
             if (!allValid) {
-                e.preventDefault();
                 formSubmissionInProgress = false;
                 alert('Please fill in all required fields.');
                 return;
             }
             
-            // Log form data for debugging
+            // Create form data
             const formData = new FormData(e.target);
             console.log('Form data being submitted:');
             for (let [key, value] of formData.entries()) {
                 console.log(key, ':', value);
             }
             
-            // Show confirmation message after a delay
-            setTimeout(function() {
+            // Try fetch submission first
+            fetch('https://docs.google.com/forms/d/e/1FAIpQLSeXNQsBtbDdXzSvjWKCjR_0IV8mNjQG3HXqkDR-3iI8w3ogTA/formResponse', {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // Important for cross-origin requests
+            }).then(() => {
+                console.log('Fetch submission completed');
+                formSubmissionInProgress = false;
                 alert('Thank you for your inquiry! We\'ve received your request and will contact you within 24 hours with a detailed quote.\n\nFor urgent matters, please email us directly at therenocrewltd@gmail.com');
                 document.getElementById('quoteForm').reset();
+            }).catch(error => {
+                console.log('Fetch failed, trying iframe method:', error);
+                // Fallback to iframe method
+                submitViaIframe(formData);
+            });
+        });
+        
+        function submitViaIframe(formData) {
+            const iframe = document.querySelector('iframe[name="hidden_iframe"]');
+            const form = document.getElementById('quoteForm');
+            
+            // Remove preventDefault and submit normally
+            form.removeEventListener('submit', arguments.callee);
+            form.submit();
+            
+            setTimeout(() => {
+                alert('Thank you for your inquiry! We\'ve received your request and will contact you within 24 hours with a detailed quote.\n\nFor urgent matters, please email us directly at therenocrewltd@gmail.com');
+                form.reset();
                 formSubmissionInProgress = false;
             }, 2000);
-        });
+        }
 
         // Handle iframe load event to know when form submission is complete
         window.addEventListener('load', function() {

@@ -1267,8 +1267,8 @@
                             <input type="text" id="fullName" name="entry.2034928511" required>
                         </div>
                         <div class="form-group">
-                            <label for="phone">Mobile Number *</label>
-                            <input type="tel" id="phone" name="entry.156242593" required>
+                            <label for="phone">Mobile Number</label>
+                            <input type="tel" id="phone" name="entry.156242593">
                         </div>
                     </div>
                     <div class="form-row">
@@ -1286,27 +1286,28 @@
                         <select id="service" name="entry.333722396" required>
                             <option value="">Select a service</option>
                             <option value="Home Repairs">Home Repairs</option>
-                            <option value="Deck Repair/Build">Deck Repair/Build</option>
-                            <option value="Renovations">Renovations</option>
-                            <option value="Fencing">Fencing</option>
-                            <option value="Lawn Care & Landscaping">Lawn Care & Landscaping</option>
-                            <option value="Painting">Painting</option>
-                            <option value="GIB® & Plastering">GIB® & Plastering</option>
+                            <option value="Deck repair & build">Deck repair & build</option>
+                            <option value="Full renovations">Full renovations</option>
+                            <option value="Fencing solutions">Fencing solutions</option>
+                            <option value="Lawn care & Landscaping">Lawn care & Landscaping</option>
+                            <option value="Professional painting">Professional painting</option>
+                            <option value="GIB & Plastering">GIB & Plastering</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="priority">Priority *</label>
+                        <label for="priority">Priority * (1 = Very High, 5 = Very Low)</label>
                         <select id="priority" name="entry.1390191149" required>
                             <option value="">Select priority</option>
-                            <option value="Urgent (Within 24 hours)">Urgent (Within 24 hours)</option>
-                            <option value="High (Within a week)">High (Within a week)</option>
-                            <option value="Normal (Within 2 weeks)">Normal (Within 2 weeks)</option>
-                            <option value="Low (No rush)">Low (No rush)</option>
+                            <option value="1">1 - Very High (Urgent)</option>
+                            <option value="2">2 - High</option>
+                            <option value="3">3 - Medium</option>
+                            <option value="4">4 - Low</option>
+                            <option value="5">5 - Very Low</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="problem">Describe the Problem *</label>
-                        <textarea id="problem" name="entry.363728680" placeholder="Please describe the problem or work needed..." required></textarea>
+                        <label for="problem">Describe the Problem</label>
+                        <textarea id="problem" name="entry.363728680" placeholder="Please describe the problem or work needed..."></textarea>
                     </div>
                     <div class="form-group">
                         <label for="moreDetails">Additional Details</label>
@@ -1528,12 +1529,39 @@
 
         // Form submission to Google Forms
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            // Let the form submit to Google Forms naturally
-            // Show confirmation message after submission
+            console.log('Form submission started...');
+            
+            // Validate required fields before submission
+            const requiredFields = ['fullName', 'email', 'address', 'service', 'priority'];
+            let allValid = true;
+            
+            requiredFields.forEach(field => {
+                const element = document.getElementById(field);
+                if (!element.value.trim()) {
+                    allValid = false;
+                    console.log('Missing required field:', field);
+                }
+            });
+            
+            if (!allValid) {
+                e.preventDefault();
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Log form data for debugging
+            const formData = new FormData(e.target);
+            console.log('Form data being submitted:');
+            for (let [key, value] of formData.entries()) {
+                console.log(key, ':', value);
+            }
+            
+            // Let the form submit to Google Forms
+            // Show confirmation message after a delay
             setTimeout(function() {
                 alert('Thank you for your inquiry! We\'ve received your request and will contact you within 24 hours with a detailed quote.\n\nFor urgent matters, please email us directly at therenocrewltd@gmail.com');
                 document.getElementById('quoteForm').reset();
-            }, 1500);
+            }, 2000);
         });
 
         // Handle iframe load event to know when form submission is complete

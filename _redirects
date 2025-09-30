@@ -1,0 +1,23 @@
+# Cloudflare Pages Redirects
+
+# Clean URLs - redirect .html extensions
+/deck-repair /deck-repair.html 200
+/fencing /fencing.html 200
+/gibstopping /gibstopping.html 200
+/home-repairs /home-repairs.html 200
+/lawn-care /lawn-care.html 200
+/painting /painting.html 200
+/renovations /renovations.html 200
+
+# Redirect old URLs if any
+/deck-repair-v2.html /deck-repair.html 301
+/fencing-v2.html /fencing.html 301
+/gibstopping-v2.html /gibstopping.html 301
+/home-repairs-v2.html /home-repairs.html 301
+/lawn-care-v2.html /lawn-care.html 301
+/painting-v2.html /painting.html 301
+/renovations-v2.html /renovations.html 301
+/index-v2.html / 301
+
+# 404 fallback
+/* /index.html 404

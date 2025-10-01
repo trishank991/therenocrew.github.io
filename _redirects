@@ -1,15 +1,6 @@
 # Cloudflare Pages Redirects
 
-# Clean URLs - redirect .html extensions
-/deck-repair /deck-repair.html 200
-/fencing /fencing.html 200
-/gibstopping /gibstopping.html 200
-/home-repairs /home-repairs.html 200
-/lawn-care /lawn-care.html 200
-/painting /painting.html 200
-/renovations /renovations.html 200
-
-# Redirect old URLs if any
+# Redirect old URLs if any (only if needed in future)
 /deck-repair-v2.html /deck-repair.html 301
 /fencing-v2.html /fencing.html 301
 /gibstopping-v2.html /gibstopping.html 301

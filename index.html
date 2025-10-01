@@ -1531,32 +1531,15 @@
             });
         });
 
-        // Google Forms submission via iframe (most reliable method)
+        // Simple Google Forms submission (like the working test form)
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            // Validate required fields before submission
-            const requiredFields = ['fullName', 'email', 'address', 'service', 'priority'];
-            let allValid = true;
-            
-            requiredFields.forEach(field => {
-                const element = document.getElementById(field);
-                if (!element.value.trim()) {
-                    allValid = false;
-                }
-            });
-            
-            if (!allValid) {
-                e.preventDefault();
-                alert('Please fill in all required fields.');
-                return;
-            }
-
             // Show submission in progress
             const submitButton = document.querySelector('.form-submit');
             const originalText = submitButton.textContent;
             submitButton.textContent = 'Submitting...';
             submitButton.disabled = true;
             
-            // Reset form and show success message after iframe submission
+            // Reset form and show success message after submission
             setTimeout(() => {
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;

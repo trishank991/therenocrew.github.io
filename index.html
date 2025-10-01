@@ -1260,7 +1260,7 @@
             <div class="contact-form">
                 <!-- Form submissions will be sent to: therenocrewltd@gmail.com -->
                 <!-- To activate: Sign up at formspree.io or emailjs.com and update the form action -->
-                <form id="quoteForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeXNQsBtbDdXzSvjWKCjR_0IV8mNjQG3HXqkDR-3iI8w3ogTA/formResponse" method="POST">
+                <form id="quoteForm" action="https://docs.google.com/forms/d/e/1FAIpQLSeXNQsBtbDdXzSvjWKCjR_0IV8mNjQG3HXqkDR-3iI8w3ogTA/formResponse" method="POST" target="hidden_iframe">
                     <!-- Google Forms hidden fields -->
                     <input type="hidden" name="draftResponse" value="[]">
                     <input type="hidden" name="pageHistory" value="0">
@@ -1531,10 +1531,8 @@
             });
         });
 
-        // Simplified Form submission to Google Forms
+        // Google Forms submission via iframe (most reliable method)
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent default form submission
-            
             // Validate required fields before submission
             const requiredFields = ['fullName', 'email', 'address', 'service', 'priority'];
             let allValid = true;
@@ -1547,6 +1545,7 @@
             });
             
             if (!allValid) {
+                e.preventDefault();
                 alert('Please fill in all required fields.');
                 return;
             }
@@ -1557,21 +1556,13 @@
             submitButton.textContent = 'Submitting...';
             submitButton.disabled = true;
             
-            // Create form data and submit via iframe
-            const form = document.getElementById('quoteForm');
-            const iframe = document.querySelector('iframe[name="hidden_iframe"]');
-            
-            // Submit the form normally to the iframe
-            form.target = 'hidden_iframe';
-            form.submit();
-            
-            // Reset form and show success message after a delay
+            // Reset form and show success message after iframe submission
             setTimeout(() => {
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
                 alert('Thank you for your inquiry! We\'ve received your request and will contact you within 24 hours with a detailed quote.\n\nFor urgent matters, please email us directly at therenocrewltd@gmail.com');
-                form.reset();
-            }, 3000);
+                document.getElementById('quoteForm').reset();
+            }, 2000);
         });
     </script>
 </body>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Google Form Test</title>
+</head>
+<body>
+    <h1>Test Google Form Submission</h1>
+    
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSeXNQsBtbDdXzSvjWKCjR_0IV8mNjQG3HXqkDR-3iI8w3ogTA/formResponse" method="POST" target="hidden_iframe">
+        <p>
+            <label>Full Name:</label><br>
+            <input type="text" name="entry.2034928511" required>
+        </p>
+        
+        <p>
+            <label>Email:</label><br>
+            <input type="email" name="entry.1651265940" required>
+        </p>
+        
+        <p>
+            <label>Address:</label><br>
+            <input type="text" name="entry.278959202" required>
+        </p>
+        
+        <p>
+            <label>Service:</label><br>
+            <select name="entry.333722396" required>
+                <option value="">Select service</option>
+                <option value="Home Repairs">Home Repairs</option>
+                <option value="Deck repair & build">Deck repair & build</option>
+                <option value="Full renovations">Full renovations</option>
+            </select>
+        </p>
+        
+        <p>
+            <label>Priority:</label><br>
+            <select name="entry.1390191149" required>
+                <option value="">Select priority</option>
+                <option value="1">1 - Very High</option>
+                <option value="2">2 - High</option>
+                <option value="3">3 - Medium</option>
+            </select>
+        </p>
+        
+        <p>
+            <button type="submit">Submit Test</button>
+        </p>
+    </form>
+    
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+    
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            setTimeout(function() {
+                alert('Test submission completed! Check your Google Form responses.');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

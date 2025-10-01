@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test 5-Field Google Form</title>
+</head>
+<body>
+    <h1>Test Your Updated Google Form</h1>
+    <p>Testing the 5 fields: Name, Mobile, Service, Problem Description, Priority</p>
+    
+    <form action="https://docs.google.com/forms/d/e/1FAIpQLSeXNQsBtbDdXzSvjWKCjR_0IV8mNjQG3HXqkDR-3iI8w3ogTA/formResponse" method="POST" target="hidden_iframe">
+        <p>
+            <label>Name:</label><br>
+            <input type="text" name="entry.2034928511" required>
+        </p>
+        
+        <p>
+            <label>Mobile Number:</label><br>
+            <input type="tel" name="entry.156242593" required>
+        </p>
+        
+        <p>
+            <label>Service Needed:</label><br>
+            <select name="entry.333722396" required>
+                <option value="">Select service</option>
+                <option value="Home Repairs">Home Repairs</option>
+                <option value="Deck repair & build">Deck repair & build</option>
+                <option value="Full renovations">Full renovations</option>
+                <option value="Fencing solutions">Fencing solutions</option>
+                <option value="Lawn care & Landscaping">Lawn care & Landscaping</option>
+                <option value="Professional painting">Professional painting</option>
+                <option value="GIB & Plastering">GIB & Plastering</option>
+            </select>
+        </p>
+        
+        <p>
+            <label>Describe the Problem:</label><br>
+            <textarea name="entry.363728680" required></textarea>
+        </p>
+        
+        <p>
+            <label>Priority:</label><br>
+            <select name="entry.1390191149" required>
+                <option value="">Select priority</option>
+                <option value="1">1 - Very High</option>
+                <option value="2">2 - High</option>
+                <option value="3">3 - Medium</option>
+                <option value="4">4 - Low</option>
+                <option value="5">5 - Very Low</option>
+            </select>
+        </p>
+        
+        <p>
+            <button type="submit">Submit Test</button>
+        </p>
+    </form>
+    
+    <iframe name="hidden_iframe" style="display:none;"></iframe>
+    
+    <script>
+        document.querySelector('form').addEventListener('submit', function() {
+            setTimeout(function() {
+                alert('Test submission completed! Check your Google Form responses.');
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

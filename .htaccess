@@ -1,0 +1,9 @@
+# Force XML content type for sitemap files
+<Files "sitemap.xml">
+    AddType application/xml .xml
+</Files>
+
+# Alternative content type that also works
+<Files "sitemap.xml">
+    AddType text/xml .xml
+</Files>

@@ -1,0 +1,22 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://www.therenocrew.co.nz/sitemap.xml
+
+# Important pages for crawling
+Allow: /index.html
+Allow: /home-repairs.html
+Allow: /deck-repair.html
+Allow: /renovations.html
+Allow: /fencing.html
+Allow: /lawn-care.html
+Allow: /painting.html
+Allow: /gibstopping.html
+
+# Allow important assets
+Allow: /reno-crew-logo.png
+Allow: /shed-project.jpg
+Allow: /*.jpg
+Allow: /*.png
+Allow: /*.webp
